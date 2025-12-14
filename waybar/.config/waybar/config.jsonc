@@ -1,0 +1,46 @@
+{
+	"layer": "top",
+	"spacing": 10,
+	"modules-left": [
+		"hyprland/workspaces",
+		"hyprland/submap",
+		"clock"
+	],
+	"modules-center": [
+		"hyprland/window"
+	],
+	"modules-right": [
+		"idle_inhibitor",
+		"pulseaudio",
+		"network",
+		"cpu",
+		"memory",
+		"custom/power"
+	],
+	
+    "custom/power": {
+    "format": " ⏻ ",
+    "on-click": "wlogout --protocol layer-shell",
+    "menu": "on-click-right",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+    "menu-actions": {
+        "shutdown": "shutdown",
+        "reboot": "reboot",
+        "suspend": "systemctl suspend",
+        "hibernate": "systemctl hibernate",
+        "logout": "hyprctl dispatch exit"
+        }
+    },
+    "hyprland/workspaces": {
+	"disable-scroll": true,
+	"all-outputs": true,
+	"warp-on-scrolls": false,
+	"format": "{name}: {icon}", 
+	"format-icons": {
+             "urgent": "",
+             "active": "",
+             "default": ""
+         }
+    }
+	
+}
