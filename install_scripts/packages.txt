@@ -22,3 +22,8 @@ btop
 yazi
 zsh
 fastfetch
+sddm
+lib32-nvidia-utils
+nvidia-dkms
+nvidia-utils
+
