@@ -1,23 +1,23 @@
 {
-	"layer": "top",
-	"spacing": 10,
-	"modules-left": [
-		"hyprland/workspaces",
-		"hyprland/submap",
-		"clock"
-	],
-	"modules-center": [
-		"hyprland/window"
-	],
-	"modules-right": [
-		"idle_inhibitor",
-		"pulseaudio",
-		"network",
-		"cpu",
-		"memory",
-		"custom/power"
-	],
-	
+    "layer": "top",
+    "spacing": 10,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap",
+        "clock"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "power-profiles-daemon",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "custom/power"
+    ],
     "custom/power": {
     "format": " ⏻ ",
     "on-click": "wlogout --protocol layer-shell",
@@ -32,22 +32,72 @@
         }
     },
     "hyprland/workspaces": {
-	"disable-scroll": true,
-	"all-outputs": true,
-	"warp-on-scrolls": false,
-	"format": "{name}: {icon}", 
-	"format-icons": {
-             "urgent": "",
-             "active": "",
-             "default": ""
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scrolls": false,
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
          }
     },
+    "power-profiles-daemon": {
+      "format": "{icon} ",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },  
     "pulseaudio": {
-	"format": "{icon} {volume}%",
-	"format-muted": "🔇", 
-	"format-icons":{
-		"default":["🔈", "🔈", "🔈"],
-	"on-click": "pavucontrol"
-	}
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     }
 }
+
