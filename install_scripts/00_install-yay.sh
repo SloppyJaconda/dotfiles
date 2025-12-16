@@ -13,10 +13,10 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-popd
-
 if [$? -eq 0]; then
 	echo "yay should be installed"
 else
 	echo "potential problem installing yay"
 fi
+
+popd

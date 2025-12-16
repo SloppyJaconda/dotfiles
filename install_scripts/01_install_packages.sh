@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PACKAGE_FILE="packages.txt"
+PACKAGE_FILE="$(dirname "$0")/packages.txt"
 
 if [ ! -f "$PACKAGE_FILE" ]; then
 	echo "Error: no package file."
@@ -10,7 +10,7 @@ fi
 
 install_packages() {
 	local packages=("$@")
-	if [ ${#packages[@]} -eq 0 ]; then 
+	if [ ${#packages[@]} -eq 0 ]; then
 		return 0
 	fi
 
@@ -34,10 +34,10 @@ install_packages() {
 }
 
 readarray -t PACKAGES < <(grep -vE '^\s*($|#)' "$PACKAGE_FILE")
-if [ ${#PACKAGES[@]} -eq 0 ]; then 
+if [ ${#PACKAGES[@]} -eq 0 ]; then
 	echo "----- no packages found"
 	exit 0
 fi
 
 install_packages "${PACKAGES[@]}"
-echo "---- completed
+echo "---- completed"
