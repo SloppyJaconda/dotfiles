@@ -36,7 +36,3 @@ require("lazy").setup({
 
 })
 
-require("catppuccin").setup()
-vim.cmd.colorscheme "catppuccin"
-
-require('nvim-treesitter').install({"c", "cpp", "lua", "bash", "vim", "rust"})
