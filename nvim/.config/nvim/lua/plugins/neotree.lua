@@ -7,14 +7,17 @@ return {
       "nvim-tree/nvim-web-devicons", -- optional, but recommended
     },
     lazy = false, -- neo-tree will lazily load itself
-    config = function()
-      vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal left<CR>')
-    end,
     opts = {
       filesystem = {
         filtered_items = {
           visible = true,
+          hide_dotfiles = false,
+          never_show = {".git"},
         },
       },
     },
+    config = function(_, opts)
+      require("neo-tree").setup(opts)
+      vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal left<CR>')
+    end,
 }
