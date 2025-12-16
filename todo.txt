@@ -1,0 +1,3 @@
+hyprlock goes to black screen.
+are we acutally using sddm or gdm?
+
