@@ -2,7 +2,7 @@
 # ~/.bashrc
 #
 eval "$(starship init bash)"
-
+eval "$(keychain --eval --quiet id_ed25519)"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
