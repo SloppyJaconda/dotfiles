@@ -28,4 +28,5 @@ nvidia-dkms
 nvidia-utils
 keychain
 npm
+sddm-silent-theme
 
