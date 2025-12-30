@@ -10,3 +10,16 @@ for file in "${files[@]}"; do
 		echo "$file could not be executed"
 	fi
 done
+
+echo "Don't forget to update sddm to use silent
+
+sudoedit /etc/sddm.conf
+
+    # Make sure these options are correct:
+    [General]
+    InputMethod=qtvirtualkeyboard
+    GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
+
+    [Theme]
+    Current=silent
+    "
