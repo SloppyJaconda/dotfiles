@@ -27,4 +27,5 @@ lib32-nvidia-utils
 nvidia-dkms
 nvidia-utils
 keychain
+npm
 

@@ -1,11 +1,22 @@
 #!/bin/bash
 set -e
 
-EXCLUDE_DIR="install_scripts"
-DIRECTORIES=()
 CMD="stow"
 
-mapfile -t DIRECTORIES < <(find . -maxdepth 1 -type d -not -name "$EXCLUDE_DIR" -not -name '.*' -printf '%f\n')
+
+EXCLUDE_DIR=("install_scripts" "nvim")
+DIRECTORIES=()
+
+# 1. Build the find filter dynamically
+find_filter=()
+for dir in "${EXCLUDE_DIR[@]}"; do
+    find_filter+=( -not -name "$dir" )
+done
+
+# 2. Execute with the expanded filter
+# Using -print0 and mapfile -d '' is safer for filenames with spaces
+mapfile -d '' DIRECTORIES < <(find . -maxdepth 1 -type d "${find_filter[@]}" -not -name '.*' -printf '%f\0')
+
 
 for dir in "${DIRECTORIES[@]}"; do
 	if [ "$dir" != "." ]; then
