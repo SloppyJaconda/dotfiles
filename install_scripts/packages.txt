@@ -29,4 +29,6 @@ nvidia-utils
 keychain
 npm
 sddm-silent-theme
+zsh-autocomplete
+zsh-autosuggestions
 
