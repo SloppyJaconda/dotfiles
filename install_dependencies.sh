@@ -3,7 +3,7 @@
 files=(./install_scripts/*.sh)
 echo "executing ${#files[@]} scripts"
 
-for file in "${files[@]}"; do 
+for file in "${files[@]}"; do
 	if [ -f "$file" ] && [ -x "$file" ]; then
 		./"$file"
 	else
@@ -22,4 +22,8 @@ sudoedit /etc/sddm.conf
 
     [Theme]
     Current=silent
+
+
+    ALSO
+        copy the .face file to /usr/share/sddm/faces/ and save it as <username>.faces.icon
     "
