@@ -26,4 +26,8 @@ sudoedit /etc/sddm.conf
 
     ALSO
         copy the .face file to /usr/share/sddm/faces/ and save it as <username>.faces.icon
+
+    ALSO ALSO - hyprshell isn't included in this install script because it requires additional params to be passed in. Install it with:
+    'ZSTD_SYS_USE_PKG_CONFIG=1 yay hyprshell'
+    
     "
